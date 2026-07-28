@@ -1,0 +1,190 @@
+/* ===== UFYL SHARED STYLES ===== */
+
+/* Block overlay */
+.ufyl-block-overlay,
+.ufyl-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ufyl-overlay-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.ufyl-block-content,
+.ufyl-overlay-content {
+  position: relative;
+  background: linear-gradient(135deg, #1a1a2e, #16213e);
+  border: 1px solid rgba(14, 165, 160, 0.3);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(14, 165, 160, 0.2), 0 0 0 1px rgba(14, 165, 160, 0.1);
+  animation: ufylFadeIn 0.4s ease;
+}
+
+@keyframes ufylFadeIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ufyl-block-icon,
+.ufyl-overlay-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.ufyl-block-content h3,
+.ufyl-overlay-content h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ufyl-block-content p,
+.ufyl-overlay-content p {
+  color: #a0a0b0;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ufyl-block-actions,
+.ufyl-overlay-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.ufyl-btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.ufyl-btn-primary {
+  background: linear-gradient(135deg, #0EA5A0, #5EEAD4);
+  color: #fff;
+  box-shadow: 0 4px 15px rgba(14, 165, 160, 0.3);
+}
+
+.ufyl-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(14, 165, 160, 0.4);
+}
+
+.ufyl-btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e0e0e0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ufyl-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* Quote styling */
+.ufyl-quote {
+  background: rgba(14, 165, 160, 0.08);
+  border-left: 3px solid #0EA5A0;
+  padding: 16px 20px;
+  margin: 16px 0;
+  border-radius: 0 8px 8px 0;
+  text-align: left;
+}
+
+.ufyl-quote-text {
+  color: #e0e0e0 !important;
+  font-style: italic;
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+.ufyl-quote-author {
+  color: #0EA5A0 !important;
+  font-size: 12px !important;
+  font-weight: 600;
+  text-align: right;
+  margin-bottom: 0 !important;
+}
+
+.ufyl-time-spent {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 10px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #a0a0b0;
+}
+
+.ufyl-time-spent strong {
+  color: #5EEAD4;
+}
+
+.ufyl-snooze {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+  font-size: 12px;
+  color: #888;
+  cursor: pointer;
+}
+
+.ufyl-snooze input {
+  accent-color: #0EA5A0;
+}
+
+/* Feed message styles */
+.ufyl-feed-message,
+.ufyl-youtube-home-msg,
+.ufyl-fb-msg {
+  animation: ufylFadeIn 0.5s ease;
+}
+
+.ufyl-fb-msg {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.ufyl-fb-msg > div {
+  background: #1a1a2e;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  max-width: 400px;
+  width: 90%;
+}
+
+/* Hide elements smoothly */
+[style*="display: none"] {
+  transition: opacity 0.3s ease;
+}

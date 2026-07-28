@@ -1,0 +1,14 @@
+{
+  "name": "reclaim-focus",
+  "version": "2.3.0",
+  "description": "Take back your attention. Block mindless scrolling while keeping what actually matters.",
+  "scripts": {
+    "start": "web-ext run --firefox=firefox",
+    "build": "web-ext build --overwrite-dest",
+    "lint": "web-ext lint",
+    "sign": "web-ext sign --channel=listed"
+  },
+  "devDependencies": {
+    "web-ext": "^8.0.0"
+  }
+}

@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="logo.jpg" width="28" height="28" alt="">
+      <span>Reclaim</span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" id="themeToggle" title="Toggle theme">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/>
+          <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+      </button>
+      <button class="icon-btn active" id="powerToggle" title="Extension on/off">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M18.36 6.64a9 9 0 1 1-12.73 0"/>
+          <line x1="12" y1="2" x2="12" y2="12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-value" id="timeSaved">0</span>
+      <span class="stat-label">min spent</span>
+    </div>
+    <div class="stat">
+      <span class="stat-value" id="focusStreak">0</span>
+      <span class="stat-label">day streak</span>
+    </div>
+  </div>
+
+  <div class="platforms">
+    <!-- INSTAGRAM -->
+    <div class="platform-card" data-platform="instagram">
+      <div class="platform-header">
+        <div class="platform-info">
+          <svg class="platform-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="platform-name">Instagram</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="instagram-enabled" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="controls" id="instagram-controls">
+        <div class="control-row">
+          <span>Hide Home Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="instagram-feed" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Reels</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="instagram-reels" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Explore</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="instagram-explore" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Suggested</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="instagram-suggested" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Notifications</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="instagram-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span class="keep">✓ Keep Messages</span>
+          <span class="keep">✓ Keep Stories</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- YOUTUBE -->
+    <div class="platform-card" data-platform="youtube">
+      <div class="platform-header">
+        <div class="platform-info">
+          <svg class="platform-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span class="platform-name">YouTube</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="youtube-enabled" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="controls" id="youtube-controls">
+        <div class="control-row group-label"><span>Home Feed</span></div>
+        <div class="control-row">
+          <span>Hide Home Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-home" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Redirect to Subscriptions</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-home-subscriptions" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="control-row group-label"><span>Video Page - Sidebar</span></div>
+        <div class="control-row">
+          <span>Hide Video Sidebar</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-sidebar" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Recommended</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-recommended" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Live Chat</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-live-chat" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Playlist</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-playlist" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="control-row group-label"><span>Player</span></div>
+        <div class="control-row">
+          <span>Disable Autoplay</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-autoplay" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Disable Annotations</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-annotations" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide End Screen Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-endscreen">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide End Screen Cards</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-endscreen-cards" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="control-row group-label"><span>Below Video</span></div>
+        <div class="control-row">
+          <span>Hide Comments</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-comments">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Mixes</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-mixes" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Fundraiser</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-fundraiser" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Merch, Tickets</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-merch" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Video Info</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-video-info">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span style="padding-left:20px;font-size:12px;">— Hide Buttons Bar</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-buttons-bar">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span style="padding-left:20px;font-size:12px;">— Hide Channel</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-channel">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span style="padding-left:20px;font-size:12px;">— Hide Description</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-description">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="control-row group-label"><span>Navigation</span></div>
+        <div class="control-row">
+          <span>Hide Shorts</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-shorts" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Explore / Trending</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-explore" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Subscriptions Link</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-subscriptions-nav" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide More from YouTube</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-more-from-youtube" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Top Header</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-top-header">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span style="padding-left:20px;font-size:12px;">— Hide Notifications</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-notifications" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Inapt Search Results</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="youtube-inapt-search" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+
+        <div class="control-row">
+          <span class="keep">✓ Keep Search</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIKTOK -->
+    <div class="platform-card" data-platform="tiktok">
+      <div class="platform-header">
+        <div class="platform-info">
+          <svg class="platform-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.525.02c1.8-.1 3.5.5 4.8 1.7l.1.1c.4.3.8.6 1.2.8.5.3 1.1.4 1.6.4.1 0 .2 0 .3-.1v3.4c-.6 0-1.2-.1-1.8-.2-.7-.2-1.3-.5-1.9-.9-.3-.2-.6-.4-.8-.7v11.3c0 2.5-1.3 4.8-3.4 6.1-2.1 1.3-4.7 1.3-6.8 0-2.1-1.3-3.4-3.6-3.4-6.1 0-2.5 1.3-4.8 3.4-6.1 2.1-1.3 4.7-1.3 6.8 0 .2.1.4.3.6.4V.02z"/>
+          </svg>
+          <span class="platform-name">TikTok</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="tiktok-enabled" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="controls" id="tiktok-controls">
+        <div class="control-row">
+          <span>Hide For You Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="tiktok-foryou" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Following Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="tiktok-following">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Discover</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="tiktok-discover" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Search</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="tiktok-search">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Notifications</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="tiktok-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span class="keep">✓ Keep Inbox</span>
+          <span class="keep">✓ Keep Profile</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TWITTER/X -->
+    <!-- FACEBOOK -->
+    <div class="platform-card" data-platform="facebook">
+      <div class="platform-header">
+        <div class="platform-info">
+          <svg class="platform-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span class="platform-name">Facebook</span>
+        </div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="facebook-enabled" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      <div class="controls" id="facebook-controls">
+        <div class="control-row">
+          <span>Hide Home Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-home" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide News Feed</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-feed" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Reels</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-reels" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Watch</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-watch" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Stories</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-stories">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span>Hide Notifications</span>
+          <label class="toggle-switch small">
+            <input type="checkbox" id="facebook-notifications">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="control-row">
+          <span class="keep">✓ Keep Messenger</span>
+          <span class="keep">✓ Keep Events</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- REDDIT -->
+
+  </div>
+
+  <!-- FOCUS MODE SECTION -->
+  <div class="section-divider">
+    <span>Focus Mode</span>
+  </div>
+
+  <div class="focus-section">
+    <div class="control-row">
+      <span>Focus Timer</span>
+      <button id="focus-toggle" class="btn-start">Start</button>
+    </div>
+    <div class="focus-controls" id="focus-controls">
+      <div class="timer-display" id="timer-display" style="display:none;">
+        <div class="timer-row">
+          <span class="timer-label">Focus time</span>
+          <span class="timer-value" id="elapsed-time">00:00</span>
+        </div>
+        <div class="timer-row">
+          <span class="timer-label">Next reminder</span>
+          <span class="timer-value" id="reminder-countdown">--:--</span>
+        </div>
+      </div>
+      <div class="control-row">
+        <span>Remind every</span>
+        <div class="time-input">
+          <input type="number" id="reminder-minutes" value="20" min="5" max="120">
+          <span>minutes</span>
+        </div>
+      </div>
+      <div class="control-row">
+        <span>Show motivational quotes</span>
+        <label class="toggle-switch small">
+          <input type="checkbox" id="quotes-enabled" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIME TRACKING SECTION -->
+  <div class="section-divider">
+    <span>Time Tracking</span>
+  </div>
+
+  <div class="time-section">
+    <div class="platform-times" id="platform-times"></div>
+    <div class="chart-container">
+      <canvas id="timeChart" width="332" height="150"></canvas>
+      <p class="chart-empty" id="chart-empty">No data yet — visit a blocked site to start tracking</p>
+    </div>
+  </div>
+
+  <!-- SCHEDULE SECTION -->
+  <div class="section-divider">
+    <span>Schedule</span>
+  </div>
+
+  <div class="schedule-section">
+    <div class="control-row">
+      <span>Active hours only</span>
+      <label class="toggle-switch small">
+        <input type="checkbox" id="schedule-enabled">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+    <div class="schedule-controls" id="schedule-controls" style="display:none">
+      <div class="control-row">
+        <span>From</span>
+        <input type="time" id="schedule-from" value="09:00">
+      </div>
+      <div class="control-row">
+        <span>To</span>
+        <input type="time" id="schedule-to" value="17:00">
+      </div>
+      <div class="days-row">
+        <label class="day-chip"><input type="checkbox" id="day-mon" checked><span>M</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-tue" checked><span>T</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-wed" checked><span>W</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-thu" checked><span>T</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-fri" checked><span>F</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-sat"><span>S</span></label>
+        <label class="day-chip"><input type="checkbox" id="day-sun"><span>S</span></label>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="status" id="status">Settings auto-save</div>
+    <div class="footer-links">
+      <a class="feedback-link" href="#" id="support-link">🛟 Support</a>
+      <a class="feedback-link" href="https://docs.google.com/forms/d/e/1FAIpQLSfXQ5kN2mJdYMQLbK3hq8xxhATV6ln2KI5F0qX-XTBrRBbMNA/viewform?usp=dialog" target="_blank" rel="noopener">💡 Request a Feature</a>
+    </div>
+  </div>
+
+  <!-- Support Modal -->
+  <div class="modal-overlay" id="support-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <h3>🛟 Help & Support</h3>
+      <div class="support-items">
+        <div class="support-item">
+          <strong>Extension not blocking content?</strong>
+          <ul>
+            <li>Make sure the extension is enabled via the power button (top-right)</li>
+            <li>Check the platform toggle is ON for the site you're on</li>
+            <li>Try refreshing the page</li>
+          </ul>
+        </div>
+        <div class="support-item">
+          <strong>Settings not saving?</strong>
+          <ul>
+            <li>Toggle a setting off and on again</li>
+            <li>Close and reopen the popup</li>
+          </ul>
+        </div>
+        <div class="support-item">
+          <strong>Site not working properly?</strong>
+          <ul>
+            <li>Try disabling Reclaim for that site and refresh</li>
+            <li>Use the "Report an Issue" form below</li>
+          </ul>
+        </div>
+        <div class="support-item">
+          <strong>Where is my data stored?</strong>
+          <ul>
+            <li>All data is stored locally on your device</li>
+            <li>Nothing is sent to any server</li>
+          </ul>
+        </div>
+      </div>
+      <a class="modal-form-link" href="https://docs.google.com/forms/d/e/1FAIpQLScJVYQtKou9ylhNzckTrcS0p3k2KV6DBF1VxzLcaeMvxLlUMQ/viewform?usp=dialog" target="_blank" rel="noopener">🐛 Report an Issue</a>
+    </div>
+  </div>
+
+  <script src="defaults.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
