@@ -10,6 +10,16 @@
 
 ---
 
+## Screenshots
+
+| Instagram Controls | YouTube Controls | TikTok & Facebook |
+|:---:|:---:|:---:|
+| ![Instagram granular controls](screenshots/instagram-controls.jpg) | ![YouTube granular controls](screenshots/youtube-controls.jpg) | ![TikTok and Facebook controls](screenshots/tiktok-facebook.jpg) |
+
+| Time Tracking Dashboard | Facebook Blocked | Instagram Blocked |
+|:---:|:---:|:---:|
+| ![Time tracking with 7-day chart](screenshots/time-tracking.jpg) | ![Facebook feed blocked by Reclaim](screenshots/facebook-blocked.jpg) | ![Instagram feed blocked by Reclaim](screenshots/instagram-blocked.jpg) |
+
 ## Features
 
 - **Block distractions** — Hide feeds, reels, shorts, For You pages, recommendations, explore tabs, and more on YouTube, Instagram, Facebook, and TikTok.
@@ -46,7 +56,7 @@ cd reclaim-focus
 Then load in Firefox:
 1. Open `about:debugging#/runtime/this-firefox`
 2. Click **Load Temporary Add-on...**
-3. Select `manifest.json`
+3. Select `src/manifest.json`
 
 ### Using web-ext (for developers)
 
@@ -72,7 +82,7 @@ All settings are stored locally using `chrome.storage.local`. They sync across t
 
 ### Default Settings
 
-See [`defaults.js`](defaults.js) for the complete list of configurable options.
+See [`src/defaults.js`](src/defaults.js) for the complete list of configurable options.
 
 ## Development
 
@@ -80,21 +90,25 @@ See [`defaults.js`](defaults.js) for the complete list of configurable options.
 
 ```
 reclaim-focus/
-├── manifest.json          # Extension manifest
-├── background.js          # Background service worker
-├── defaults.js            # Default settings
-├── popup.html             # Popup UI
-├── popup.js               # Popup logic
-├── popup.css              # Popup styles
-├── logo.jpg               # Popup logo
-├── content/
-│   ├── hide.css           # Shared overlay styles
-│   ├── youtube.js         # YouTube content script
-│   ├── instagram.js       # Instagram content script
-│   ├── facebook.js        # Facebook content script
-│   └── tiktok.js          # TikTok content script
-├── icons/                 # Extension icons (16/32/48/128px)
-└── tests/                 # Test files
+├── src/                   # Extension source (web-ext sourceDir)
+│   ├── manifest.json      # Extension manifest
+│   ├── background.js      # Background service worker
+│   ├── defaults.js        # Default settings
+│   ├── popup.html         # Popup UI
+│   ├── popup.js           # Popup logic
+│   ├── popup.css          # Popup styles
+│   ├── logo.jpg           # Popup logo
+│   ├── content/
+│   │   ├── hide.css       # Shared overlay styles
+│   │   ├── youtube.js     # YouTube content script
+│   │   ├── instagram.js   # Instagram content script
+│   │   ├── facebook.js    # Facebook content script
+│   │   └── tiktok.js      # TikTok content script
+│   └── icons/             # Extension icons (16/32/48/128px)
+├── screenshots/           # AMO listing screenshots
+├── tests/                 # Test files
+├── .web-ext-config.js     # web-ext configuration
+└── package.json           # NPM scripts & dependencies
 ```
 
 ### Building
